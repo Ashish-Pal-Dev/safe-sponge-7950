@@ -125,4 +125,37 @@ function displaySubcat(event){
     document.querySelector(".slider").append(subcat);
 }
 
+//FETCH PART STARTED HERE(I'LL BASICALLY FETCH FAKE DATA HEERE)
+let bag;
+let cartitems=[];
+let url="https://636a2da7b10125b78fd2ce00.mockapi.io/data";
+async function getdata(){
+    try{
+        let res=await fetch(url);
+        let out=await res.json();
+        localStorage.setItem("data",JSON.stringify(out));
+        displayData(out);
+    }
+    catch(err){
+        console.log(err);
+      }
+}
+getdata();
+
+function displayData(arr){
+    document.querySelector(".recommended").innerHTML="";
+    arr.forEach((elem,index)=>{
+        let div=document.createElement("div");
+        let image=document.createElement("img");
+        image.setAttribute("src",elem.image);
+        let title=document.createElement("p");
+        title.innerText=elem.name;
+        let price=document.createElement("p");
+        price.innerText=elem.price;
+        div.append(image,title,price);
+        document.querySelector(".recommended").append(div);
+    });
+}
+
+
 
