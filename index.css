@@ -234,13 +234,27 @@
     width: 100%;
     height: auto;
     display: grid;
-    gap: 10px;
-    grid-template-rows: auto;
+    row-gap: 20px;
+    grid-auto-rows: 350px;
     grid-template-columns: repeat(5,1fr);
 }
 .recommended>div{
+    /* border: 2px solid mediumblue; */
+    font-family: OpenSans,Arial,Helvetica,sans-serif;
+    font-size: 15px;
     cursor: pointer;
     padding: 10px;
+    line-height: 25px;
+}
+.recommended>div>button{
+    border: none;
+    height: 40px;
+    width: 100%;
+}
+.recommended>div>button:hover{
+    cursor: pointer;
+    color: white;
+    background-color:rgb(255,127,0);
 }
 .recommended>div:hover{
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
