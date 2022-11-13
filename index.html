@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <!-- header part -->
-        <div class="header">
+        <div class="">
             <div class="headlist">
                 <ul>
                     <li> &#128241;  Save $3 with App &#9013;</li>
@@ -26,13 +26,18 @@
                 </div>
                 <div class="right">
                     <div class="search">
-                        <select id="filter">
+                        <select onchange="funfilter()" id="filter">
                             <option value="">All</option>
-                            <option value="Laptop">Laptop</option>
+                            <option value="Electronics">Electronics</option>
                             <option value="Mobile">Mobile</option>
-                            <option value="Speakers">Speakers</option>
+                            <option value="Men">Men</option>
+                            <option value="Women">Women</option>
+                            <option value="Laptops">Laptops</option>
+                            <option value="Kid">Kid</option>
                           </select>
-                          <span class="searchitem"><input type="text"></span>
+                          <span class="searchitem">
+                            <a href=""><img id="lens" src="/images/search icon.png" alt="" ></a>
+                            <input oninput="funcSearch()" id="searchid" type="search"></input></span>
                     </div>
                     <div class="userthings" id="ut1">
                         <img src="images/User icon.png" alt="user"><span>Sign in</span>
@@ -100,7 +105,7 @@
             <div><img src="images/collection6.webp" alt=""></div>
         </div>
         <h2 id="superdealtext">&#9776; SUPER DEALS</h2>
-        <div class="collection">
+        <div id="spdeal" class="collection">
             <div class="coll1">
                 <img src="images/collection1.jpg" alt="collection">
             </div>

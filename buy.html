@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header><h1></h1></header>
+    <div class="cont">
+        <div class="form">
+            <form>
+                <label id="lbl1">Full name</label><br>
+                <input id="name" type="text" placeholder="Enter your full name"><br>
+                <label id="lbl2">Address</label><br>
+                <input id="mail" type="text" placeholder="Enter your full address"><br>
+                <label id="lbl3">Debit card number</label><br>
+                <input id="pass" type="password" placeholder="Enter you 16-digit debit card number"><br>
+                <label id="lbl4">CVV</label><br>
+                <input id="cvv" type="password" placeholder="Enter CVV here"><br>
+                <input id="submit" type="submit" value="Order"><br>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    let total=JSON.parse(localStorage.getItem("total"));
+    console.log(total)
+    document.querySelector("header>h1").innerText="Total amount: "+total;
+    document.querySelector("form").addEventListener("submit",myfunc);
+    function myfunc(event){
+        event.preventDefault();
+        let enterName=document.querySelector("#name").value;
+        let enterEmail=document.querySelector("#mail").value;
+        let enterPassword=document.querySelector("#pass").value;
+        let cvv=document.querySelector("#cvv").value;
+        if(enterName===""){
+            alert("Enter correct name");
+        }
+        else if(enterPassword.length!==16){
+            alert("Wrong debit card number");
+        }
+        else if(cvv.length!==3){
+            alert("Wrong cvv entered");
+        } else{
+            document.querySelector(".cont").innerHTML="";
+            document.querySelector("header>h1").innerText="Order Placed Successfully !";
+            setTimeout(() => {
+                window.location.assign("index.html");
+            }, 2000);
+        }
+        
+    }
+</script>
+</html>

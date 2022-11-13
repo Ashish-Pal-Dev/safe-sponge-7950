@@ -15,18 +15,17 @@ function goCart(){
     window.location.assign("cart.html");
 }
 
+//SUBCATEGORIES BY JS HERE
+
 let catlist=document.querySelector("#catlist");
 catlist.querySelectorAll("li>a").forEach((item)=>{
     item.addEventListener("mouseenter",displaySubcat);
 });
-
 catlist.querySelectorAll("li>a").forEach((item)=>{
     item.addEventListener("mouseout",function(){
         subcat.innerHTML="";
     });
 });
-
-
 let subcat;
 function displaySubcat(event){
     event.preventDefault();
@@ -124,7 +123,13 @@ function displaySubcat(event){
     subcat.append(subcat1,subcat2,subcat3,subcat4,subcat5,subcat6,subcat7);
     document.querySelector(".slider").append(subcat);
 }
-
+let a=document.querySelector("#spdeal").innerHTML;
+  let b=document.querySelector(".slider").innerHTML;
+  let c=document.querySelector(".sliderbottom").innerHTML;
+  let d=document.querySelector(".collection").innerHTML;
+  let e=document.querySelector("#collectiontext").innerHTML;
+  let f=document.querySelector("#superdealtext").innerHTML;
+  let g=document.querySelector("#recommendedtext").innerHTML;
 //FETCH PART STARTED HERE(I'LL BASICALLY FETCH FAKE DATA HEERE)
 
 let cartitems=JSON.parse(localStorage.getItem("cart"))||[];
@@ -400,6 +405,43 @@ let data=[
       "id": "30"
     }
 ]
+let bag=data;
+function funfilter(){
+  let filter=document.querySelector("#filter").value;
+  let filterdata=bag.filter(function(item){
+    return item.category==filter;
+});
+displayData(filterdata);
+}
+
+function funcSearch(){
+  let x=document.querySelector("input").value;
+  console.log(x.length);
+  let newData=bag.filter(function(item){
+      return item.name.toLowerCase().includes(x.toLowerCase());
+  });
+
+  if((x.length)!==0){
+    document.querySelector("#spdeal").innerHTML="";
+    document.querySelector(".slider").innerHTML="";
+    document.querySelector(".sliderbottom").innerHTML="";
+    document.querySelector(".collection").innerHTML="";
+    document.querySelector("#collectiontext").innerHTML="";
+    document.querySelector("#superdealtext").innerHTML="";
+    document.querySelector("#recommendedtext").innerHTML="";
+  }
+  if(x.length===0){
+    document.querySelector("#spdeal").innerHTML=a;
+    document.querySelector(".slider").innerHTML=b;
+    document.querySelector(".sliderbottom").innerHTML=c;
+    document.querySelector(".collection").innerHTML=d;
+    document.querySelector("#collectiontext").innerHTML=e;
+    document.querySelector("#superdealtext").innerHTML=f;
+    document.querySelector("#recommendedtext").innerHTML=g;
+    // displayData(newData);
+  }
+  displayData(newData);
+}
 displayData(data);
 function displayData(arr){
     document.querySelector(".recommended").innerHTML="";
@@ -412,13 +454,21 @@ function displayData(arr){
         let price=document.createElement("p");
         price.innerText="$"+elem.price;
         let button=document.createElement("button");
+        button.setAttribute("id","b1");
         button.innerText="Add to cart";
         button.addEventListener("click", function(){
           cartitems.push(elem);
-          alert("Item added to Cart successfully");   
+          // alert("Item added to Cart successfully");  
+          // setTimeout(() => {
+          //   console.log("ashish")
+          // }, 2000);
+          // button.innerText="Added succesfully";
           localStorage.setItem("cart",JSON.stringify(cartitems));
         });
-        div.append(image,title,price,button);
+        let button2=document.createElement("button");
+        button2.setAttribute("id","b2");
+        button2.innerText="Buy now";
+        div.append(image,title,price,button,button2);
         document.querySelector(".recommended").append(div);
     });
 }
