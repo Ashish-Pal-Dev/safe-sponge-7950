@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header><h1>Wondermall</h1></header>
+    <div class="cont">
+        <div class="form">
+            <h3>Login</h3>
+            <form>
+                <label id="lbl1">Full name</label><br>
+                <input id="name" type="text" placeholder="Enter your full name"><br>
+                <label id="lbl2">Email</label><br>
+                <input id="mail" type="text" placeholder="Enter email"><br>
+                <label id="lbl3">Password</label><br>
+                <input id="pass" type="text" placeholder="Enter password"><br>
+                <p id="policy">By signing in, I accept the Masai School Terms of Service and acknowledge the <a href="">Privacy Policy</a>.</p>
+                <input id="submit" type="submit" value="SIGN IN"><br>
+                <p id="already">Don't have an account? <a href="signup.html">Sign up</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    document.querySelector("form").addEventListener("submit",myfunc);
+function myfunc(event){
+    let cred=JSON.parse(localStorage.getItem("userdetails"));
+    event.preventDefault();
+    let enterName=document.querySelector("#name").value;
+    let enterEmail=document.querySelector("#mail").value;
+    let enterPassword=document.querySelector("#pass").value;
+    if(enterName===cred.username&&enterEmail===cred.email&&enterPassword===cred.password){
+        document.querySelector("h3").innerText="Sign Up successful";
+        document.querySelector("h3").style.color="green";
+        window.location.assign("index.html");
+    } else{
+        document.querySelector("h3").innerText="Wrong credentials !";
+        document.querySelector("h3").style.color="red";
+    }
+}
+</script>
+</html>

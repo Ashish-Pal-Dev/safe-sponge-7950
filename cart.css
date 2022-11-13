@@ -39,16 +39,31 @@ header{
     height: 50%;
 }
 .cartvalue{ 
-    background
+    background-color:rgba(255, 128, 0, 0.692);
     width: 89%;
     margin: auto;
     padding-top: 5px;
     font-weight: bold;
     padding-bottom: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     padding-left: 5px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 } 
+.order{
+    margin: auto;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.order>button{
+    display: inline-block;
+    height: 40px;
+    width: 100px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(255,127,0);;
+}
 .recommended{
     width: 90%;
     margin: auto;

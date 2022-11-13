@@ -2,8 +2,10 @@ document.querySelector("#headerlogo").addEventListener("click",goHome);
 function goHome(){
     window.location.assign("index.html");
 }
-
-
+document.querySelector("#ordernow").addEventListener("click",gotoorder);
+function gotoorder(){
+    window.location.assign("buy.html");
+}
 
 let cartitems=JSON.parse(localStorage.getItem("cart"));
 displayCart(cartitems);
@@ -31,5 +33,6 @@ function displayCart(arr){
         document.querySelector(".recommended").append(div);
         total+=Number(elem.price);
     });
+    localStorage.setItem("total",JSON.stringify(total));
     document.querySelector(".cartvalue").innerText="Total Cart value: "+"$"+total;
 }
